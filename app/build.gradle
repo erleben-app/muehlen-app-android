@@ -20,6 +20,12 @@ android {
         resValue 'string', 'launch_url', System.getenv("TWA_START_URL") ?: 'https://muehlen.app/app'
     }
 
+    // Kein von Google verschlüsselter Abhängigkeitsblock im APK (IzzyOnDroid,
+    // F-Droid lehnen ihn ab); im Bundle für Play bleibt er
+    dependenciesInfo {
+        includeInApk = false
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
