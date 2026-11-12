@@ -71,7 +71,9 @@ jobs:
             --title "$GITHUB_REF_NAME" \
             --notes-file "fastlane/metadata/android/de-DE/changelogs/$code.txt"
       - name: In den internen Test hochladen
-        if: env.HAS_PLAY_ACCOUNT == 'true' && !inputs.testbuild
+        # Nur bei manuellem Start: ein Tag würde sonst denselben versionCode
+        # noch einmal schicken, den Play ablehnt
+        if: env.HAS_PLAY_ACCOUNT == 'true' && github.event_name == 'workflow_dispatch' && !inputs.testbuild
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
