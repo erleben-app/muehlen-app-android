@@ -1,0 +1,1 @@
+Die Statusleiste verdeckt keine Inhalte mehr. Die App bleibt jetzt immer im Hochformat.

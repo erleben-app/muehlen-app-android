@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Mühlen.app für Android als Trusted Web Activity: Chrome zeigt die
+// Seite, deshalb gehen Teilen, Downloads, WebXR, Push und Service Worker
+// wie im Browser. Domains stehen in res/values/hosts.xml (generate-hosts.mjs).
+android {
+    namespace 'app.muehlen'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'app.muehlen'
+        minSdk 24
+        targetSdk 36
+        // Fest im Repository, damit F-Droid sie lesen kann; vor jedem
+        // Release erhöhen und fastlane/…/changelogs/<versionCode>.txt anlegen
+        versionCode 10
+        versionName '1.0.1'
+        resValue 'string', 'launch_url', System.getenv("TWA_START_URL") ?: 'https://muehlen.app/app'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // Upload-Schlüssel für Google Play aus der CI (.github/workflows/android.yml)
+    signingConfigs {
+        release {
+            if (System.getenv("ANDROID_KEYSTORE_PATH")) {
+                storeFile file(System.getenv("ANDROID_KEYSTORE_PATH"))
+                storeType "pkcs12"
+                storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
+                keyAlias System.getenv("ANDROID_KEY_ALIAS") ?: "upload"
+                keyPassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (System.getenv("ANDROID_KEYSTORE_PATH")) signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.7.3'
+}

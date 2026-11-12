@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Erzeugt von generate-hosts.mjs, nicht von Hand bearbeiten -->
+<resources>
+    <string name="asset_statements" translatable="false">[{\"relation\":[\"delegate_permission/common.handle_all_urls\"],\"target\":{\"namespace\":\"web\",\"site\":\"https://muehlen.app\"}},{\"relation\":[\"delegate_permission/common.handle_all_urls\"],\"target\":{\"namespace\":\"web\",\"site\":\"https://milk.muehlen.app\"}}]</string>
+    <string-array name="additional_trusted_origins">
+        <item>https://muehlen.app</item>
+        <item>https://milk.muehlen.app</item>
+    </string-array>
+</resources>

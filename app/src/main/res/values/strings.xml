@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mühlen.app</string>
+    <color name="brand">#C3162C</color>
+    <!-- Status- und Navigationsleiste wie der Seitenhintergrund -->
+    <!-- Schwarz wie der Gehäuserand (Tim 12.10.2026); Vollbild (sticky-immersive)
+         war unzuverlässig: Kamera in der Suchleiste, Fußleiste in den runden Ecken -->
+    <color name="bars">#000000</color>
+    <color name="bars_divider">#000000</color>
+</resources>
