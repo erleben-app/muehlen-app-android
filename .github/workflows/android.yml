@@ -5,7 +5,7 @@
 # Neue Region auf muehlen.app: Workflow einmal starten, die Domainliste
 # kommt aus /api/store-app-hosts (TWA kennt keine Wildcards).
 # Neue Version: versionCode/versionName in app/build.gradle erhöhen,
-# fastlane/metadata/android/de-DE/changelogs/<versionCode>.txt anlegen,
+# fastlane/metadata/android/{de-DE,en-US}/changelogs/<versionCode>.txt anlegen,
 # Tag v<versionName> pushen.
 # Secrets: ANDROID_KEYSTORE_BASE64 (PKCS12), ANDROID_KEYSTORE_PASSWORD,
 # optional PLAY_SERVICE_ACCOUNT_JSON

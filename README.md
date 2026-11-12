@@ -29,12 +29,17 @@ access to erleben.app. Signing uses `ANDROID_KEYSTORE_PATH` and
 ## Releases
 
 1. Raise `versionCode` and `versionName` in `app/build.gradle`.
-2. Add `fastlane/metadata/android/de-DE/changelogs/<versionCode>.txt`.
-3. Push a tag `v<versionName>`. The workflow builds the signed APK, attaches it
-   to a GitHub release and uploads the bundle to the Google Play internal track.
+2. Add `changelogs/<versionCode>.txt` under `fastlane/metadata/android/de-DE/`
+   and `en-US/`.
+3. Push a tag `v<versionName>`. The workflow builds the signed APK and attaches
+   it to a GitHub release (IzzyOnDroid picks it up from there).
+4. For Google Play, start the workflow manually; it uploads the bundle to the
+   internal track.
 
 Store texts and images live in `fastlane/metadata/android/` and are used by
-Google Play (`play-metadata.mjs`), F-Droid and IzzyOnDroid.
+Google Play (`play-metadata.mjs`, German texts), F-Droid and IzzyOnDroid.
+`en-US` is the fallback locale and holds the images for all locales.
+Changelogs exist per locale as `changelogs/<versionCode>.txt` (plain ASCII, max. 500 bytes).
 
 ## License
 

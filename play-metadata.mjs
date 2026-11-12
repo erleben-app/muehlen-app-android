@@ -82,7 +82,8 @@ for (const sprache of SPRACHEN) {
 		shortDescription: lies(sprache, "short_description.txt"),
 		fullDescription: lies(sprache, "full_description.txt"),
 	})
-	const bilder = new URL(`${sprache}/images/`, META)
+	// Bilder liegen einmal unter en-US (Rückfall für F-Droid und IzzyOnDroid)
+	const bilder = new URL("en-US/images/", META)
 	await bild(edit, sprache, "icon", readFileSync(new URL("icon.png", bilder)))
 	await api(`edits/${edit}/listings/${sprache}/featureGraphic`, "DELETE")
 	await bild(edit, sprache, "featureGraphic", readFileSync(new URL("featureGraphic.png", bilder)))
